@@ -1,0 +1,849 @@
+DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioCultiva - Crecimiento Consciente</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#355b19', 
+                        secondary: '#487d22',
+                        background: '#f7f8f6', 
+                        textMain: '#333333',
+                    },
+                    fontFamily: {
+                        heading: ['Caveat', 'cursive'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f8f6;
+            color: #333333;
+        }
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Caveat', cursive;
+        }
+        .page-section {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .page-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .nav-link.active-link {
+            border-bottom: 2px solid #355b19;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <nav class="bg-[#f7f8f6] py-4 px-6 md:px-12 sticky top-0 z-50 shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" onclick="navigate('inicio')" class="text-3xl font-heading font-bold text-primary flex items-center">
+                BioCultiva
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium text-gray-700">
+                <a href="#" onclick="navigate('inicio')" class="nav-link active-link hover:text-primary transition pb-1" data-target="inicio">Inicio</a>
+                <a href="#" onclick="navigate('nosotros')" class="nav-link hover:text-primary transition pb-1" data-target="nosotros">Nosotros</a>
+                <a href="#" onclick="navigate('servicios')" class="nav-link hover:text-primary transition pb-1" data-target="servicios">Servicios</a>
+                <a href="#" onclick="navigate('productos')" class="nav-link hover:text-primary transition pb-1" data-target="productos">Productos</a>
+                <a href="#" onclick="navigate('contacto')" class="nav-link hover:text-primary transition pb-1" data-target="contacto">Contacto</a>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="hidden md:block">
+                <a href="https://wa.me/51978250888" target="_blank" class="bg-green-500 text-white px-6 py-2 rounded-md font-medium hover:bg-green-600 transition shadow-md inline-flex items-center">
+                    <i class="fab fa-whatsapp mr-2 text-lg"></i> WhatsApp
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-primary text-2xl" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg flex flex-col p-4 space-y-4 text-center z-40">
+            <a href="#" onclick="navigate('inicio'); toggleMobileMenu()" class="text-gray-700 font-medium">Inicio</a>
+            <a href="#" onclick="navigate('nosotros'); toggleMobileMenu()" class="text-gray-700 font-medium">Nosotros</a>
+            <a href="#" onclick="navigate('servicios'); toggleMobileMenu()" class="text-gray-700 font-medium">Servicios</a>
+            <a href="#" onclick="navigate('productos'); toggleMobileMenu()" class="text-gray-700 font-medium">Productos</a>
+            <a href="#" onclick="navigate('contacto'); toggleMobileMenu()" class="text-gray-700 font-medium">Contacto</a>
+            <a href="https://wa.me/51978250888" target="_blank" onclick="toggleMobileMenu()" class="bg-green-500 text-white px-6 py-2 rounded-md font-medium inline-flex items-center justify-center mx-auto hover:bg-green-600 transition">
+                <i class="fab fa-whatsapp mr-2 text-lg"></i> WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-grow">
+
+        <section id="inicio" class="page-section active max-w-7xl mx-auto px-6 md:px-12 py-8">
+            <!-- Hero Section -->
+            <div class="relative w-full h-[400px] md:h-[500px] rounded-3xl overflow-hidden mb-16 shadow-lg">
+                <!-- Imagen de Portada -->
+                <img src="https://instasize.com/api/image/faa94f93e7f53f92278be0b8f3a360c461991a01e61d4ba61e005b628106838b.jpeg" alt="Cultivando" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x500/355b19/ffffff?text=Imagen+No+Disponible'">
+                
+                <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                
+                <div class="absolute top-8 left-8 md:top-16 md:left-16 bg-white bg-opacity-95 p-8 md:p-10 rounded-2xl max-w-lg shadow-xl">
+                    <h1 class="text-4xl md:text-5xl font-heading font-bold text-primary mb-4 leading-tight">CULTIVA TU PROPIO OASIS DE VIDA</h1>
+                    <p class="text-gray-700 mb-6 text-sm md:text-base leading-relaxed">
+                        Capacitaciones practicas en producción de Bioabonos y Huertos Orgánicos. Conecta con la tierra y aprende a cultivar de forma consciente.
+                    </p>
+                    <button onclick="navigate('servicios')" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition shadow-md">
+                        Ver Cursos
+                    </button>
+                </div>
+                
+                <!-- Floating Info Box -->
+                <div class="absolute bottom-8 right-8 bg-white p-6 rounded-2xl shadow-xl hidden md:block w-72">
+                    <h3 class="font-bold text-sm mb-2 uppercase tracking-wide">Inicio - BIOCULTIVA</h3>
+                    <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                        <li>Soberanía alimentaria</li>
+                        <li>Sostenibilidad</li>
+                        <li>Horticultura urbana</li>
+                    </ul>
+                    <button onclick="navigate('productos')" class="text-xs border border-gray-300 px-4 py-2 rounded-md font-medium hover:bg-gray-50 transition w-full">
+                        Catalogo de productos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Intro Text -->
+            <div class="text-center max-w-4xl mx-auto mb-16">
+                <p class="text-gray-700 text-lg md:text-xl font-heading leading-relaxed">
+                    Vive la experiencia BioCultiva, contamos con: Módulos de producción de bioabonos, nuestro propio Huerto Orgánico en funcionamiento continuo, métodos de control de plagas efectivos , Equipos de medición de pH, Salinidad de suelos y muchos otros mas bioinsumos para que tu proyecto se haga realidad. Ven y Únete a la metodología definitiva para aprender a ser Autosostenible produciendo tus propias hortalizas libres de pesticidas, ahorra dinero y años de ensayos.
+                </p>
+            </div>
+
+            <!-- Services Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 items-stretch">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition flex flex-col">
+                    <img src="https://instasize.com/api/image/78b8682c68276862596a0c6adbbde330d52d0497c3f66e4081335d907c8fff63.jpeg" alt="Cursos" class="w-full h-80 object-cover object-center">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="font-heading text-2xl font-bold text-gray-800 mb-3">Cursos-Taller prácticos</h3>
+                        <p class="text-sm text-gray-600 mb-6 flex-grow">
+                            Aprende técnicas avanzadas y sostenibles para crear tus propios fertilizantes orgánicos, mejorando la salud del suelo de manera natural.
+                        </p>
+                        <button onclick="navigate('servicios')" class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md font-medium hover:bg-gray-50 transition text-sm self-start mt-auto">
+                            Saber más
+                        </button>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition flex flex-col">
+                    <img src="https://instasize.com/api/image/2ceaf8c63eaafb96b0930689c072c5058cda39bb70ca5c4f5931ad9c253b51c2.png" alt="Bioinsumos" class="w-full h-80 object-cover object-center">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="font-heading text-2xl font-bold text-gray-800 mb-3">Productos y Bioinsumos</h3>
+                        <p class="text-sm text-gray-600 mb-6 flex-grow">
+                            Revisa nuestro catálogo de productos y bioinsumos donde encontrarás accesorios, artículos de cultivo, composteras, lombricarios, entre otros.
+                        </p>
+                        <button onclick="navigate('productos')" class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md font-medium hover:bg-gray-50 transition text-sm self-start mt-auto">
+                            Saber más
+                        </button>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition flex flex-col">
+                    <img src="https://instasize.com/api/image/95d46f846e5116ab80267f9df594c0f67c35f9c6d5438d65224cde7f1b7211ea.jpeg" alt="Equipos" class="w-full h-80 object-cover object-center">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="font-heading text-2xl font-bold text-gray-800 mb-3">Servicios y Asesoría personalizada</h3>
+                        <p class="text-sm text-gray-600 mb-6 flex-grow">
+                            Accede a servicios de capacitación personalizada en producción de bioabonos ideal para espacios urbanos, fincas, industrias, hoteles.
+                        </p>
+                        <button onclick="navigate('servicios')" class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md font-medium hover:bg-gray-50 transition text-sm self-start mt-auto">
+                            Saber más
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials & Newsletter -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Testimonials -->
+                <div class="bg-white rounded-3xl p-10 shadow-sm border border-gray-100 relative">
+                    <i class="fas fa-quote-right absolute top-8 right-8 text-6xl text-gray-100"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-6 text-gray-800">Lo que dicen nuestros alumnos</h3>
+                    <p class="italic text-gray-600 mb-8 leading-relaxed">
+                        "Los cursos me dieron la confianza para empezar mi propio huerto en casa. La metodología es muy práctica y los profesores transmiten una verdadera pasión por la tierra."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full overflow-hidden mr-4">
+                            <img src="https://placehold.co/100x100/cccccc/ffffff?text=MF" alt="Maria" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm">Maria Fernández</h4>
+                            <p class="text-xs text-gray-500">Emprendedora</p>
+                        </div>
+                    </div>
+                    <!-- Pagination Dots -->
+                    <div class="flex justify-center mt-6 space-x-2">
+                        <div class="w-2 h-2 rounded-full bg-primary"></div>
+                        <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                        <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="bg-primary rounded-3xl p-10 text-white shadow-md flex flex-col justify-center">
+                    <h3 class="font-heading text-3xl font-bold mb-4">Inscríbete hoy</h3>
+                    <p class="text-sm text-green-100 mb-8 leading-relaxed">
+                        Únete a nuestra comunidad y recibe tips de cultivo, noticias sobre próximos cursos y descuentos exclusivos.
+                    </p>
+                    <div>
+                        <button type="button" onclick="navigate('contacto')" class="bg-green-700 hover:bg-green-600 px-8 py-3 rounded-lg font-medium transition text-sm whitespace-nowrap shadow-sm">
+                            Inscribirme
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="nosotros" class="page-section max-w-7xl mx-auto px-6 md:px-12 py-12">
+            
+            <div class="flex flex-col md:flex-row gap-12 mb-20 items-center">
+                <!-- Text Content -->
+                <div class="w-full md:w-1/2">
+                    <div class="mb-12">
+                        <h2 class="text-5xl font-heading font-bold text-primary mb-6">NUESTRA MISIÓN</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Capacitar al público en general en relación a temas de producción de bioabonos y cultivo de huertos orgánicos.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 class="text-5xl font-heading font-bold text-primary mb-6">NUESTRA VISIÓN</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Ser una empresa referente a nivel nacional e internacional en lograr la soberanía alimentaria de las personas a traves de la enseñanza de practicas sostenibles de auto cultivo y economía circular
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Image -->
+                <div class="w-full md:w-1/2">
+                    <img src="https://instasize.com/api/image/7373b534cb52d84f6111b86155e45efc8b8d6a68dc7d3699b7bf6a097335528c.jpeg" alt="Hojas Verdes" class="rounded-3xl shadow-lg w-full object-cover" style="max-height: 600px;">
+                </div>
+            </div>
+
+            <!-- Core Values Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- Value 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-leaf text-2xl text-primary mb-4"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-3 text-gray-800">Sostenibilidad</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Implementamos prácticas agrícolas que regeneran el suelo y minimizan el impacto ambiental, asegurando recursos para el mañana.</p>
+                </div>
+                <!-- Value 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="font-heading text-2xl font-bold mb-3 text-gray-800 mt-10">Compromiso</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Dedicación total a la enseñanza y al acompañamiento de cada persona en su camino hacia la autosuficiencia.</p>
+                </div>
+                <!-- Value 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-arrow-trend-up text-2xl text-primary mb-4"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-3 text-gray-800">Mejora continua</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Evolucionamos constantemente nuestras técnicas para ofrecer las soluciones más eficientes y ecológicas.</p>
+                </div>
+                <!-- Value 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="font-heading text-2xl font-bold mb-3 text-gray-800 mt-10">Empoderamiento</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Brindamos las herramientas y el conocimiento necesario para que cada individuo tome el control de su alimentación.</p>
+                </div>
+                <!-- Value 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-heart text-2xl text-primary mb-4"></i>
+                    <h3 class="font-heading text-2xl font-bold mb-3 text-gray-800">Pasión</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Amor por la tierra y dedicación en cada capacitación para inspirar un cambio positivo.</p>
+                </div>
+                <!-- Value 6 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="font-heading text-2xl font-bold mb-3 text-gray-800 mt-10">Respeto</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Valoramos la biodiversidad y fomentamos un trato digno hacia las personas y el medio ambiente.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="servicios" class="page-section max-w-7xl mx-auto px-6 md:px-12 py-12">
+            
+            <div class="text-center mb-12">
+                <h2 class="text-5xl font-heading font-bold text-primary mb-4">NUESTROS SERVICIOS</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Soluciones integrales para la agricultura consciente. Combinamos la sabiduría de la tierra con la precisión de la ciencia moderna.
+                </p>
+            </div>
+
+            <div class="space-y-8 mb-16">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm flex flex-col md:flex-row border border-gray-100">
+                    <div class="w-full md:w-5/12">
+                        <img src="https://instasize.com/api/image/95d46f846e5116ab80267f9df594c0f67c35f9c6d5438d65224cde7f1b7211ea.jpeg" alt="Análisis de Suelo" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-full md:w-7/12 p-8 md:p-12 flex flex-col justify-center">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mb-4">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3 class="font-heading text-3xl font-bold text-gray-800 mb-4">Caracterización Inicial de Suelo</h3>
+                        <p class="text-gray-600 mb-6 text-sm">
+                            El primer paso para un cultivo exitoso. Realizamos un análisis fundamental para comprender la salud de tu tierra.
+                        </p>
+                        <ul class="space-y-2 mb-8 text-sm text-gray-700">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-3"></i> Análisis de pH</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-3"></i> Conductividad Eléctrica</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-3"></i> Evaluación de Textura</li>
+                        </ul>
+                        <button onclick="navigate('contacto')" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition w-max">
+                            Solicitar Análisis
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm flex flex-col md:flex-row-reverse border border-gray-100">
+                    <div class="w-full md:w-3/5 bg-[#f7f8f6] flex items-center justify-center p-4 md:p-6">
+                        <img src="https://cdn.imagetourls.com/uploads/tyImg/A2pk71GR.png" alt="Visitas Guiadas" class="w-full h-auto rounded-xl shadow-md">
+                    </div>
+                    <div class="w-full md:w-2/5 p-8 md:p-12 flex flex-col justify-center">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mb-4">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3 class="font-heading text-3xl font-bold text-gray-800 mb-4">Visitas Guiadas</h3>
+                        <p class="text-gray-600 mb-8 text-sm leading-relaxed">
+                            Ven a conocer nuestras instalaciones. Aprende de primera mano sobre nuestras técnicas de cultivo, manejo de suelo y prácticas sostenibles en un entorno real.
+                        </p>
+                        <button onclick="navigate('contacto')" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition w-max">
+                            Agendar Visita
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm flex flex-col-reverse md:flex-row border border-gray-100">
+                    <div class="w-full md:w-7/12 p-8 md:p-12 flex flex-col justify-center">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mb-4">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="font-heading text-3xl font-bold text-gray-800 mb-4">Eventos Corporativos</h3>
+                        <p class="text-gray-600 mb-8 text-sm leading-relaxed">
+                            Transforma el equipo de tu empresa con nuestro taller de producción de bioabonos y huertos orgánicos. Es una experiencia única de teambuilding verde que fomenta la sostenibilidad y el trabajo en equipo. Ideal para eventos corporativos, responsabilidad social y bienestar laboral.
+                        </p>
+                        <button onclick="navigate('contacto')" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition w-max">
+                            Solicitar Cotización
+                        </button>
+                    </div>
+                    <div class="w-full md:w-5/12">
+                        <img src="https://instasize.com/api/image/ad8409513fb4d918b7ed37de785997105a88dacb39a3d34bc2bb021a746165f3.jpeg" alt="Eventos Corporativos" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cursos y Talleres Especializados -->
+            <div class="text-center mb-10 mt-20">
+                <h3 class="font-heading text-3xl font-bold text-gray-800 mb-2">Cursos y Talleres Especializados</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto text-sm">
+                    Aprende desde las bases hasta técnicas avanzadas para un cultivo 100% orgánico y sostenible con nuestros expertos.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 items-stretch">
+                <!-- Curso 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition">
+                    <img src="https://instasize.com/api/image/ce0c3106fd8b21fa295d3ac5f351f64a2356e3674eaf132ea9dfa557a15a7320.png" alt="Compostaje y Bioles" class="w-full h-40 object-cover object-center">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="font-heading text-xl font-bold text-gray-800 mb-2">Compostaje, Lombricultura y Bioles</h4>
+                        <p class="text-xs text-gray-600 mb-4 flex-grow">Domina la transformación de residuos orgánicos en abonos líquidos y sólidos de alta calidad y nutrición para tus plantas.</p>
+                        <button onclick="navigate('contacto')" class="text-primary font-bold text-sm hover:underline text-left mt-auto"><i class="fas fa-arrow-right mr-1"></i> Solicitar Info</button>
+                    </div>
+                </div>
+                <!-- Curso 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition">
+                    <img src="https://instasize.com/api/image/30dd3196deed9d0d3400b082f08c2c1290d9fe52686a03fac9caac507bd112c9.jpeg" alt="Organoponía" class="w-full h-40 object-cover object-center">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="font-heading text-xl font-bold text-gray-800 mb-2">Organoponía</h4>
+                        <p class="text-xs text-gray-600 mb-4 flex-grow">Aprende el sistema de cultivo sobre sustratos orgánicos, la solución ideal para producir en espacios urbanos y reducidos.</p>
+                        <button onclick="navigate('contacto')" class="text-primary font-bold text-sm hover:underline text-left mt-auto"><i class="fas fa-arrow-right mr-1"></i> Solicitar Info</button>
+                    </div>
+                </div>
+                <!-- Curso 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition">
+                    <img src="https://instasize.com/api/image/f13af16388ebdb907f12db2fab665f968c4813a2dc9c9eefe45ad94f236e1d4e.jpeg" alt="Aromáticas" class="w-full h-40 object-cover object-center">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="font-heading text-xl font-bold text-gray-800 mb-2">Cultivo de Aromáticas</h4>
+                        <p class="text-xs text-gray-600 mb-4 flex-grow">Descubre las mejores técnicas de siembra, cuidado y aprovechamiento de plantas aromáticas, medicinales y repelentes.</p>
+                        <button onclick="navigate('contacto')" class="text-primary font-bold text-sm hover:underline text-left mt-auto"><i class="fas fa-arrow-right mr-1"></i> Solicitar Info</button>
+                    </div>
+                </div>
+                <!-- Curso 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition">
+                    <img src="https://instasize.com/api/image/7373b534cb52d84f6111b86155e45efc8b8d6a68dc7d3699b7bf6a097335528c.jpeg" alt="Huertos Orgánicos" class="w-full h-40 object-cover object-center">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="font-heading text-xl font-bold text-gray-800 mb-2">Curso de Huertos Orgánicos</h4>
+                        <p class="text-xs text-gray-600 mb-4 flex-grow">Inicia y mantén tu propio huerto libre de pesticidas químicos. Te guiamos desde la semilla hasta la cosecha en tu mesa.</p>
+                        <button onclick="navigate('contacto')" class="text-primary font-bold text-sm hover:underline text-left mt-auto"><i class="fas fa-arrow-right mr-1"></i> Solicitar Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Asesorias Personalizadas -->
+            <div class="text-center mb-10 mt-12">
+                <h3 class="font-heading text-3xl font-bold text-gray-800 mb-2">Asesorías Personalizadas</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto text-sm">
+                    Diseñamos estrategias de agricultura sostenible adaptadas a las necesidades específicas de tu sector.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- Asesoria Cards -->
+                <div class="bg-white p-8 rounded-2xl text-center shadow-sm border border-gray-100">
+                    <i class="fas fa-home text-2xl text-gray-600 mb-4"></i>
+                    <h4 class="font-bold text-gray-800 mb-2">Hogar</h4>
+                    <p class="text-xs text-gray-500">Transformamos tu balcón, terraza o jardín en un espacio productivo y lleno de vida.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl text-center shadow-sm border border-gray-100">
+                    <i class="fas fa-graduation-cap text-2xl text-gray-600 mb-4"></i>
+                    <h4 class="font-bold text-gray-800 mb-2">Colegios, institutos, universidades</h4>
+                    <p class="text-xs text-gray-500">Programas educativos integrales para fomentar la conciencia ambiental en las nuevas generaciones.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl text-center shadow-sm border border-gray-100">
+                    <i class="fas fa-industry text-2xl text-gray-600 mb-4"></i>
+                    <h4 class="font-bold text-gray-800 mb-2">Industria alimentaria</h4>
+                    <p class="text-xs text-gray-500">Optimización de procesos agrícolas para la agroindustria, enfocados en la sostenibilidad y el rendimiento a escala.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl text-center shadow-sm border border-gray-100">
+                    <i class="fas fa-building text-2xl text-gray-600 mb-4"></i>
+                    <h4 class="font-bold text-gray-800 mb-2">Empresas</h4>
+                    <p class="text-xs text-gray-500">Consultoría estratégica para integrar prácticas sostenibles y agricultura urbana en entornos corporativos.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl text-center shadow-sm border border-gray-100">
+                    <i class="fas fa-user-tie text-2xl text-gray-600 mb-4"></i>
+                    <h4 class="font-bold text-gray-800 mb-2">Profesionales relacionados</h4>
+                    <p class="text-xs text-gray-500">Educadores, Ambiente, Ecología, Forestal, Sostenibilidad, Gastronomía, Psicología, Paisajismo, Arquitectura.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl text-center shadow-sm border border-gray-100">
+                    <i class="fas fa-users text-2xl text-gray-600 mb-4"></i>
+                    <h4 class="font-bold text-gray-800 mb-2">Público general</h4>
+                    <p class="text-xs text-gray-500">Guía paso a paso para iniciar y mantener tu propio huerto casero con éxito.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="productos" class="page-section max-w-7xl mx-auto px-6 md:px-12 py-12">
+            
+            <div class="text-center mb-12">
+                <h2 class="text-5xl font-heading font-bold text-primary mb-4">Crecimiento Consciente</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Explora nuestra línea premium de bioinsumos y herramientas diseñadas para revitalizar tu tierra.
+                </p>
+            </div>
+
+            <h3 class="font-heading text-3xl font-bold text-gray-800 mb-8">Catálogo de Productos</h3>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16" id="products-container">
+                <!-- Products will be injected here by JS to keep code clean and manageable -->
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="max-w-3xl mx-auto mb-16">
+                <h3 class="font-heading text-3xl font-bold text-gray-800 mb-8 text-center">Preguntas Frecuentes</h3>
+                
+                <div class="space-y-4">
+                    <div class="bg-white rounded-lg p-5 shadow-sm border border-gray-100 cursor-pointer flex justify-between items-center" onclick="toggleFaq(this)">
+                        <span class="font-medium text-sm text-gray-700">¿Cómo aplico el Biol Líquido?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-xs transition-transform"></i>
+                    </div>
+                    <div class="hidden bg-gray-50 p-4 text-sm text-gray-600 rounded-b-lg -mt-4 pt-6 border border-t-0 border-gray-100">
+                        El Biol Líquido se aplica de forma foliar (rociado sobre las hojas) diluido en agua según las indicaciones del envase. Recomendamos aplicarlo temprano en la mañana o al atardecer.
+                    </div>
+
+                    <div class="bg-white rounded-lg p-5 shadow-sm border border-gray-100 cursor-pointer flex justify-between items-center" onclick="toggleFaq(this)">
+                        <span class="font-medium text-sm text-gray-700">¿Hacen envíos a todo el país?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-xs transition-transform"></i>
+                    </div>
+                    <div class="hidden bg-gray-50 p-4 text-sm text-gray-600 rounded-b-lg -mt-4 pt-6 border border-t-0 border-gray-100">
+                        Sí, realizamos envíos a todo el Perú a través de agencias terrestres. El costo de envío varía según el destino y el volumen del pedido.
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="contacto" class="page-section max-w-7xl mx-auto px-6 md:px-12 py-12">
+            
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary mb-6">Hablemos de Crecimiento Consciente</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto leading-relaxed text-sm md:text-base">
+                    Logra ya! tu soberanía alimentaria, procesa los residuos orgánicos de tu hogar o industria, aprende en nuestros módulos de producción continua de bioabonos y huertos orgánicos, aprenda a controlar plagas y enfermedades, resuelva sus dudas aprenda a medir si su suelo o compost van por buen camino. Empiece ese proyecto obtenga su propio Oasis.
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 mb-12">
+                <!-- Form -->
+                <div class="w-full lg:w-1/2 bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
+                    <h3 class="font-heading text-3xl font-bold text-gray-800 mb-6">Envíanos un Mensaje</h3>
+                    <form onsubmit="handleContact(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Tu nombre</label>
+                            <input type="text" id="contact-nombre" class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Correo Electrónico</label>
+                            <input type="email" id="contact-email" class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Teléfono</label>
+                            <input type="tel" id="contact-telefono" class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Servicio de Interés</label>
+                            <select id="contact-servicio" class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:border-primary focus:ring-1 focus:ring-primary transition text-gray-600">
+                                <option value="Consulta General">Selecciona un servicio...</option>
+                                <option value="Cursos-Taller">Cursos-Taller</option>
+                                <option value="Productos y Bioinsumos">Productos y Bioinsumos</option>
+                                <option value="Análisis de Suelo">Análisis de Suelo</option>
+                                <option value="Asesoría Personalizada">Asesoría Personalizada</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Mensaje</label>
+                            <textarea id="contact-mensaje" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" required></textarea>
+                        </div>
+                        <div class="flex items-start mt-2 mb-4">
+                            <div class="flex items-center h-5">
+                                <input id="politicas" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary accent-primary cursor-pointer" required>
+                            </div>
+                            <label for="politicas" class="ml-2 text-sm text-gray-600 cursor-pointer">
+                                He leído y acepto las <a href="#" onclick="openPrivacyModal(event)" class="text-primary hover:underline font-bold">políticas de privacidad</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-secondary transition mt-2 flex items-center justify-center gap-2">
+                            Enviar mensaje
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Info & Image -->
+                <div class="w-full lg:w-1/2 flex flex-col gap-8">
+                    <!-- Info Box -->
+                    <div class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
+                        <h3 class="font-heading text-3xl font-bold text-gray-800 mb-6">Información de Contacto</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-location-dot text-gray-600 mt-1 mr-4 text-xl w-6 text-center"></i>
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-800">Ubicación</h4>
+                                    <p class="text-sm text-gray-600">Socabaya, Arequipa, Perú</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="far fa-envelope text-gray-600 mt-1 mr-4 text-xl w-6 text-center"></i>
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-800">Email</h4>
+                                    <p class="text-sm text-gray-600">biocultiva@fagsolsac.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone text-gray-600 mt-1 mr-4 text-xl w-6 text-center"></i>
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-800">Teléfono</h4>
+                                    <p class="text-sm text-gray-600">+51 978 250 888</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Image Box -->
+                    <div class="rounded-3xl overflow-hidden shadow-sm h-64">
+                        <img src="https://cdn.imagetourls.com/uploads/tyImg/bg7TXmxb.jpg" alt="BioCultiva" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/8a9a5b/ffffff?text=BioCultiva'">
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="bg-[#f7f8f6] py-12 px-6 md:px-12 border-t border-gray-200 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center">
+            
+            <div class="mb-8 md:mb-0">
+                <h2 class="text-3xl font-heading font-bold text-primary mb-2">BioCultiva</h2>
+                <p class="text-xs text-gray-500">© 2019 Biocultiva. Consciencia en crecimiento para un futuro más verde.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-12 md:gap-24 mb-8 md:mb-0">
+                <div>
+                    <h4 class="font-bold text-sm text-gray-800 mb-4 hidden md:block">Company</h4>
+                    <ul class="space-y-2 text-xs text-gray-500 flex flex-row md:flex-col gap-4 md:gap-0">
+                        <li><a href="#" onclick="navigate('nosotros')" class="hover:text-primary">Misión</a></li>
+                        <li><a href="#" onclick="navigate('productos')" class="hover:text-primary">Bioinsumos</a></li>
+                        <li><a href="#" onclick="navigate('servicios')" class="hover:text-primary">Análisis de Suelo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-gray-800 mb-4 hidden md:block">Legal</h4>
+                    <ul class="space-y-2 text-xs text-gray-500 flex flex-row md:flex-col gap-4 md:gap-0">
+                        <li><a href="#" onclick="openPrivacyModal(event)" class="hover:text-primary">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center md:items-end">
+                <span class="font-bold text-sm text-gray-800 mb-3 hidden md:block">Síguenos</span>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/ElOasisVerdi/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:opacity-80 transition text-lg"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/eloasisverde_?psln=cXZxbDg0amVjZ296" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 text-white flex items-center justify-center hover:opacity-80 transition text-lg"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/51978250888" target="_blank" class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center hover:opacity-80 transition text-lg"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/51978250888" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-3xl shadow-lg hover:bg-green-600 transition z-50">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] flex flex-col shadow-2xl overflow-hidden">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 bg-primary text-white flex justify-between items-center">
+                <h3 class="font-heading text-2xl font-bold">Política de Privacidad de BioCultiva</h3>
+                <button onclick="closePrivacyModal()" class="text-white hover:text-gray-200 text-xl font-bold">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="p-6 overflow-y-auto space-y-4 text-sm text-gray-700 leading-relaxed">
+                <p class="font-bold text-gray-800">1. Presentación e Información General</p>
+                <p>En Biocultiva, valoramos y respetamos la privacidad de nuestros usuarios y clientes. La presente Política de Privacidad describe cómo recopilamos, utilizamos, almacenamos y protegemos la información personal que nos proporcionas al interactuar con nosotros a través de nuestro sitio web, redes sociales u otros canales de atención.</p>
+                <p>Esta política se elabora en conformidad con la Ley N° 29733 — Ley de Protección de Datos Personales de Perú y su Reglamento (Decreto Supremo N° 003-2013-JUS).</p>
+
+                <p class="font-bold text-gray-800">2. Información que Recopilamos</p>
+                <p>Biocultiva podrá recopilar datos personales proporcionados directamente por el usuario al realizar consultas, solicitudes o pedidos. Estos datos pueden incluir:</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>Nombres y apellidos.</li>
+                    <li>Información de contacto (correo electrónico, número de teléfono/WhatsApp).</li>
+                    <li>Dirección de entrega (para el despacho de productos).</li>
+                    <li>Información de facturación o pago necesaria para procesar tus compras.</li>
+                </ul>
+
+                <p class="font-bold text-gray-800">3. Finalidad del Tratamiento de Datos</p>
+                <p>Los datos personales recolectados por Biocultiva serán utilizados exclusivamente para los siguientes fines:</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>Procesar, gestionar y entregar los pedidos realizados por el cliente.</li>
+                    <li>Responder a dudas, consultas, reclamos o solicitudes de atención al cliente.</li>
+                    <li>Enviar confirmaciones de compra, comprobantes y actualizaciones sobre el estado de tus pedidos.</li>
+                    <li>Enviar comunicaciones comerciales, promociones o novedades relativas a Biocultiva, siempre que el usuario haya otorgado su consentimiento previo y expreso.</li>
+                </ul>
+
+                <p class="font-bold text-gray-800">4. Consentimiento</p>
+                <p>Al proporcionar tus datos personales a Biocultiva, declaras haber leído y aceptado los términos de esta Política de Privacidad, otorgando tu consentimiento libre, previo, expreso e informado para el tratamiento de tus datos según lo expuesto en este documento.</p>
+
+                <p class="font-bold text-gray-800">5. Confidencialidad y Transferencia a Terceros</p>
+                <p>En Biocultiva nos comprometemos a no vender, alquilar, ceder ni compartir tus datos personales con terceros para fines ajenos a nuestras operaciones.</p>
+                <p>Tus datos solo podrán ser compartidos con terceros indispensables para la prestación del servicio (por ejemplo, empresas de servicios de delivery o pasarelas de pago), garantizando que mantengan los estándares exigidos de confidencialidad y seguridad.</p>
+
+                <p class="font-bold text-gray-800">6. Derechos de los Usuarios (Derechos ARCO)</p>
+                <p>De acuerdo con la legislación peruana, tienes derecho a ejercer tus derechos de Acceso, Rectificación, Cancelación y Oposición (ARCO) respecto al tratamiento de tus datos personales.</p>
+                <p>Para ejercer cualquiera de estos derechos (por ejemplo, solicitar la eliminación o actualización de tus datos), puedes comunicarte con Biocultiva mediante nuestros canales oficiales de contacto.</p>
+
+                <p class="font-bold text-gray-800">7. Seguridad de la Información</p>
+                <p>Biocultiva implementa medidas de seguridad técnicas, organizativas y legales apropiadas para proteger tus datos personales contra pérdidas, usos indebidos, accesos no autorizados, alteración o divulgación.</p>
+
+                <p class="font-bold text-gray-800">8. Cambios y Modificaciones</p>
+                <p>Biocultiva se reserva el derecho de actualizar o modificar la presente Política de Privacidad en cualquier momento. Cualquier actualización será publicada en nuestros medios o canales oficiales para conocimiento de nuestros usuarios.</p>
+                <p class="text-xs text-gray-500 pt-2 border-t border-gray-200">Última actualización: Octubre de 2026</p>
+            </div>
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-end">
+                <button onclick="closePrivacyModal()" class="bg-primary text-white font-bold px-6 py-2 rounded-lg hover:bg-secondary transition">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data for Products
+        const products = [
+            { name: "Humus de Lombriz", desc: "Mejorador de suelo natural y potente.", price: "S/ 7.5 / 5 kg", imgUrl: "https://instasize.com/api/image/ce0c3106fd8b21fa295d3ac5f351f64a2356e3674eaf132ea9dfa557a15a7320.png" },
+            { name: "Compost", desc: "Abono orgánico rico en nutrientes.", price: "S/ 5 / 5 kg", imgUrl: "https://instasize.com/api/image/90d66812445234a72e95f14b4e3828980b4598b5c2efb203ba2a7a047fba1423.jpeg" },
+            { name: "Biol Líquido", desc: "Fertilizante foliar de rápida absorción.", price: "S/ 12 / 1 L", imgUrl: "https://instasize.com/api/image/c52f3a7c86cf276d8338e71b30606068eeb1a225b55eb563c61e423e1018c0cd.jpeg" },
+            { name: "Núcleo de Lombriz Californiana", desc: "Núcleo de lombrices para vermicompostaje.", price: "S/ 80 / núcleo", imgUrl: "https://instasize.com/api/image/7f88712364cdcb7368142255c5c93007bfbf135d29a3bea49997b56d0cadcc22.png" },
+            { name: "Camas de Cultivo", desc: "Estructuras de madera tratada para huertos.", price: "S/ 300 / 1 unidad", imgUrl: "https://instasize.com/api/image/30dd3196deed9d0d3400b082f08c2c1290d9fe52686a03fac9caac507bd112c9.jpeg" },
+            { name: "Lombricario", desc: "Sistema modular para crianza de lombrices.", price: "S/ 300 / 1 unidad", imgUrl: "https://i.ibb.co/tpGXwhzY/image.jpg" },
+            { name: "Compostera", desc: "Contenedor ventilado para hacer compost.", price: "S/ 200 / 1 unidad", imgUrl: "https://i.ibb.co/rGKSkG0j/image.jpg" },
+            { name: "Mesa Jardinera", desc: "Mesa de trabajo ideal para trasplantes.", price: "S/ 300 / 1 unidad", imgUrl: "https://i.ibb.co/hRb0mPPR/image.jpg" },
+            { name: "Deshidratador Solar", desc: "Deshidratador solar para conservar cosechas.", price: "S/ 350 / 1 unidad", imgUrl: "https://instasize.com/api/image/28099f627bc6e29f34d7736a6c89f4da55af0e94314e072d3012b040be6ac1e7.jpeg" },
+            { name: "Deshidratador de Semillas", desc: "Mesa reforzada para trabajos pesados de jardinería.", price: "S/ 300 / 1 unidad", imgUrl: "https://i.ibb.co/6c6W3bCX/image.jpg" },
+            { name: "Sustratos", desc: "Mezcla equilibrada para todo tipo de plantas.", price: "S/ 6 / 4 kg", imgUrl: "https://instasize.com/api/image/dd4d3e61ab20efcfc417cd4996860fce1e754d9cdd5efb345bc29e91f12ff0d2.jpeg" },
+            { name: "Cernidor de Bioabonos", desc: "Herramienta ideal para el tamizado fino de tus abonos orgánicos.", price: "S/ 350 / 1 unidad", imgUrl: "https://instasize.com/api/image/7a25cea3aaf8eeb33a9a44cb8b5173ef0a8c0e6dd7c9908c2bc61421edca9a25.png" },
+            { name: "Calendario de Siembras", desc: "Fechas de aplicación de preventivos, curativos, estaciones...", price: "S/ 75 / 1 unidad", imgUrl: "https://i.ibb.co/qzWb68X/image.jpg" },
+            { name: "Guías", desc: "Pack de abonado orgánico, control de plagas, compost...", price: "S/ 50 / 1 unidad", imgUrl: "https://i.ibb.co/hFysrJ8r/image.jpg" },
+            { name: "Aromáticas, plantas repelentes", desc: "Selección de aromáticas para el control natural de plagas.", price: "S/ 3 / c.u.", imgUrl: "https://instasize.com/api/image/f13af16388ebdb907f12db2fab665f968c4813a2dc9c9eefe45ad94f236e1d4e.jpeg" }
+        ];
+
+        // Render Products
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+            let html = '';
+            
+            products.forEach(p => {
+                // Formatting WhatsApp message with the specific product name
+                const waMessage = encodeURIComponent(`Hola, estoy interesado en adquirir el producto: ${p.name}`);
+                const waLink = `https://wa.me/51978250888?text=${waMessage}`;
+
+                html += `
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition">
+                    <div class="p-4 flex-grow flex flex-col items-center text-center">
+                        <img src="${p.imgUrl}" alt="${p.name}" class="w-full h-40 object-cover rounded-xl mb-4" onerror="this.src='https://placehold.co/400x400/eeeeee/333333?text=Sin+Imagen'">
+                        <h4 class="font-heading text-xl font-bold text-gray-800 mb-1">${p.name}</h4>
+                        <p class="text-xs text-gray-500 mb-3 flex-grow">${p.desc}</p>
+                        <span class="font-bold text-sm text-green-700 mb-4">${p.price}</span>
+                        <a href="${waLink}" target="_blank" class="w-full bg-primary text-white py-2 rounded-lg font-bold hover:bg-secondary transition mt-auto block text-center shadow-sm">
+                            Cotizar
+                        </a>
+                    </div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        // Navigation Logic (Single Page Application Behavior)
+        function navigate(pageId) {
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            // Show target section
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update active state in desktop navbar
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if(link.getAttribute('data-target') === pageId) {
+                    link.classList.add('active-link');
+                } else {
+                    link.classList.remove('active-link');
+                }
+            });
+
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Toggle FAQ Items
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            answer.classList.toggle('hidden');
+            if (icon) {
+                icon.classList.toggle('rotate-180');
+            }
+        }
+
+        // Handle Form Submission -> Send formatted message directly to Google Sheets via fetch
+        function handleContact(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('contact-nombre').value;
+            const email = document.getElementById('contact-email').value;
+            const telefono = document.getElementById('contact-telefono').value;
+            const servicio = document.getElementById('contact-servicio').value;
+            const mensaje = document.getElementById('contact-mensaje').value;
+            
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            // Mostrar estado de carga
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            btn.disabled = true;
+
+            const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwP3642Jr2QVgE5ZfVFxUTCTh4HRIlp69Cvjzdilp25Inmbv3ZqCDTBEQnClVkzQhakqA/exec";
+
+            // Enviar a Google Sheets vía fetch
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Evita restricciones de origen cruzado de Google
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nombre: nombre,
+                    email: email,
+                    telefono: telefono,
+                    servicio: servicio,
+                    mensaje: mensaje
+                })
+            }).then(() => {
+                // Confirmación visual de éxito
+                btn.innerHTML = '<i class="fas fa-check"></i> ¡Mensaje Enviado!';
+                btn.classList.replace('bg-primary', 'bg-green-600');
+                e.target.reset();
+                
+                // Restaurar el botón después de 3 segundos
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.replace('bg-green-600', 'bg-primary');
+                    btn.disabled = false;
+                }, 3000);
+            }).catch(error => {
+                console.error('Error al enviar los datos:', error);
+                btn.innerHTML = 'Error al enviar. Intenta de nuevo';
+                btn.disabled = false;
+            });
+        }
+
+        // Privacy Modal Handlers
+        function openPrivacyModal(e) {
+            if (e) e.preventDefault();
+            document.getElementById('privacyModal').classList.remove('hidden');
+        }
+
+        function closePrivacyModal() {
+            document.getElementById('privacyModal').classList.add('hidden');
+        }
+
+        // Initialize Products on load
+        window.onload = () => {
+            renderProducts();
+        };
+
+    </script>
+</body>
+</html>
